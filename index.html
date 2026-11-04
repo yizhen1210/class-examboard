@@ -458,8 +458,8 @@
     }
 
     .teacher-dialog {
-      width: min(1040px, calc(100vw - 24px));
-      max-height: 93vh;
+      width: min(720px, calc(100vw - 24px));
+      max-height: 92vh;
     }
 
     .dialog-head {
@@ -486,84 +486,10 @@
       flex-wrap: wrap;
     }
 
-    .teacher-layout {
-      display: grid;
-      grid-template-columns: 310px 1fr;
-      min-height: 620px;
-    }
-
-    .extension-side {
-      background: #f6f3ed;
-      padding: 20px;
-      border-right: 1px solid var(--line);
-    }
-
-    .extension-side h3 {
-      margin: 0 0 5px;
-    }
-
-    .extension-side .hint {
-      margin-bottom: 16px;
-    }
-
-    .ext-list {
-      display: grid;
-      gap: 10px;
-    }
-
-    .ext-empty {
-      color: var(--muted);
-      background: #fff;
-      border: 1px dashed #ccc3b8;
-      padding: 18px;
-      border-radius: 15px;
-      text-align: center;
-    }
-
-    .ext-card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 15px;
-      padding: 13px;
-    }
-
-    .ext-card b {
-      display: block;
-      font-size: 18px;
-    }
-
-    .ext-card .ext-time {
-      font-size: 28px;
-      font-weight: 1000;
-      color: #a65366;
-      margin: 5px 0;
-    }
-
-    .ext-card small {
-      color: var(--muted);
-    }
-
-    .ext-actions {
-      display: flex;
-      gap: 6px;
-      margin-top: 9px;
-    }
-
-    .ext-actions button {
-      flex: 1;
-      border: 0;
-      border-radius: 9px;
-      padding: 8px;
-      text-align: center;
-      background: var(--mint2);
-      font-weight: 900;
-      font-size: 13px;
-      cursor: pointer;
-    }
-
     .settings-main {
       padding: 22px;
-      overflow: auto;
+      overflow-y: auto;
+      max-height: calc(92vh - 140px);
     }
 
     .settings-grid {
@@ -648,68 +574,6 @@
       gap: 9px;
     }
 
-    .small-dialog {
-      width: min(560px, calc(100vw - 24px));
-      max-height: 92vh;
-    }
-
-    .small-body {
-      padding: 22px;
-      display: grid;
-      gap: 15px;
-    }
-
-    .link-box {
-      display: none;
-      padding: 12px;
-      border-radius: 13px;
-      background: var(--mint2);
-      text-align: center;
-    }
-
-    .link-box.show {
-      display: block;
-    }
-
-    .link-box input {
-      width: 100%;
-      border: 1px solid #abcfc4;
-      border-radius: 9px;
-      padding: 9px;
-      margin: 8px 0;
-    }
-
-    .link-actions {
-      display: flex;
-      gap: 8px;
-    }
-
-    .link-actions > * {
-      flex: 1;
-      text-align: center;
-      text-decoration: none;
-    }
-
-    .qr-code {
-      width: min(270px, 100%);
-      margin: 12px auto;
-      background: #fff;
-      padding: 12px;
-      border-radius: 16px;
-    }
-
-    .qr-code svg {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    .qr-caption {
-      font-size: 14px;
-      color: var(--muted);
-      font-weight: 900;
-    }
-
     .toast {
       position: fixed;
       left: 50%;
@@ -729,69 +593,6 @@
     .toast.show {
       transform: translate(-50%, 0);
       opacity: 1;
-    }
-
-    .tablet-view {
-      display: none;
-      min-height: 100vh;
-      background: var(--cream);
-      padding: clamp(18px, 4vw, 56px);
-    }
-
-    .tablet-card {
-      max-width: 900px;
-      min-height: calc(100vh - 112px);
-      margin: auto;
-      background: #fff;
-      border: 2px solid var(--line);
-      border-radius: 30px;
-      padding: clamp(24px, 5vw, 60px);
-      box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      text-align: center;
-    }
-
-    .tablet-label {
-      display: inline-block;
-      align-self: center;
-      padding: 8px 16px;
-      border-radius: 999px;
-      background: var(--mint2);
-      font-weight: 1000;
-    }
-
-    .tablet-name {
-      font-size: clamp(42px, 8vw, 84px);
-      font-weight: 1000;
-    }
-
-    .tablet-subject {
-      font-size: clamp(28px, 5vw, 50px);
-      color: var(--muted);
-      font-weight: 900;
-    }
-
-    .tablet-timer {
-      background: var(--yellow);
-      border-radius: 24px;
-      padding: 24px;
-    }
-
-    .tablet-timer .countdown {
-      font-size: clamp(74px, 15vw, 160px);
-    }
-
-    .tablet-timer.urgent {
-      background: #ffe0df;
-      color: #c94f59;
-    }
-
-    .tablet-tools {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
     }
 
     :fullscreen body {
@@ -834,13 +635,6 @@
       }
       .board {
         grid-template-columns: 1fr;
-      }
-      .teacher-layout {
-        grid-template-columns: 1fr;
-      }
-      .extension-side {
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
       }
       .exam-card {
         min-height: 430px;
@@ -968,172 +762,76 @@
     <div class="copyright">監考系統真輕鬆｜© 靖Ya樂師</div>
   </main>
 
-  <!-- 學生平板個別延長作答畫面 (?individual=1) -->
-  <section class="tablet-view" id="tabletView">
-    <div class="tablet-card">
-      <span class="tablet-label">個別延長作答時間</span>
-      <div>
-        <div class="tablet-name" id="tabletName">同學</div>
-        <div class="tablet-subject" id="tabletSubject">國語</div>
-      </div>
-      <section class="tablet-timer" id="tabletTimer">
-        <div class="timer-label">剩餘作答時間</div>
-        <div class="countdown" id="tabletCountdown">00:00</div>
-      </section>
-      <div>
-        <div class="progress-wrap">
-          <span class="mascot" id="tabletMascot">🌱</span>
-          <div class="progress">
-            <div class="progress-fill" id="tabletProgress"></div>
-          </div>
-        </div>
-        <p id="tabletMessage">按照自己的速度，仔細完成就好。</p>
-      </div>
-    </div>
-    <div class="tablet-tools">
-      <button class="primary-btn" id="tabletFull">⛶ 全螢幕</button>
-      <button class="soft-btn" id="tabletSound">🔔 啟用結束鈴聲</button>
-    </div>
-    <div class="copyright">監考系統真輕鬆｜© 靖Ya樂師</div>
-  </section>
-
   <!-- 教師設定彈窗 -->
   <dialog class="teacher-dialog" id="teacherDialog">
     <div class="dialog-head">
       <h2>教師控制後台</h2>
       <div class="head-actions">
-        <button class="primary-btn" id="openExtension" type="button">＋ 個別延長時間</button>
         <button class="soft-btn" id="autoReset" type="button">↺ 重新重設</button>
         <button class="soft-btn" data-close-teacher type="button">✕</button>
       </div>
     </div>
-    <div class="teacher-layout">
-      <aside class="extension-side">
-        <h3>個別延長中的學生</h3>
-        <p class="hint">每位學生可在平板開啟專屬倒數畫面。</p>
-        <div class="ext-list" id="extensionList"></div>
-      </aside>
-      <form class="settings-main" id="settingsForm">
-        <div class="settings-grid">
-          <div class="row">
-            <div class="field">
-              <label for="titleInput">看板標題</label>
-              <input id="titleInput" required>
-            </div>
-            <div class="field">
-              <label for="examDate">考試日期</label>
-              <input id="examDate" type="date" required>
-            </div>
-          </div>
-          <div class="row">
-            <div class="field">
-              <label for="expectedInput">應到人數</label>
-              <input id="expectedInput" type="number" min="0" max="99" required>
-            </div>
-            <div class="field">
-              <label for="presentInput">實到人數</label>
-              <input id="presentInput" type="number" min="0" max="99" required>
-            </div>
+    <form class="settings-main" id="settingsForm">
+      <div class="settings-grid">
+        <div class="row">
+          <div class="field">
+            <label for="titleInput">看板標題</label>
+            <input id="titleInput" required>
           </div>
           <div class="field">
-            <label for="absentInput">未到學生姓名</label>
-            <input id="absentInput" placeholder="例如：王小明、陳小華；全到請留白">
-          </div>
-          <div class="field">
-            <label for="noticeInput">考場提醒文字</label>
-            <input id="noticeInput" placeholder="例如：請專心作答，完成後記得檢查答案">
-          </div>
-          <div class="row">
-            <label class="checkline">
-              <input type="checkbox" id="bellEnabled">🔔 自動鐘聲（開始、結束及最後5分鐘）
-            </label>
-            <div class="field">
-              <label for="mascotSelect">進度游標</label>
-              <select id="mascotSelect">
-                <option value="🌱">🌱 小芽精靈</option>
-                <option value="🐣">🐣 圓滾滾小雞</option>
-                <option value="🐰">🐰 小兔子</option>
-                <option value="🐹">🐹 小倉鼠</option>
-                <option value="⭐">⭐ 小星星</option>
-              </select>
-            </div>
-          </div>
-          <div class="field">
-            <label>當日考程</label>
-            <div class="session-editor" id="sessionEditor"></div>
-            <button class="soft-btn" type="button" id="addSession">＋ 新增考科</button>
-            <span class="hint">系統會依目前時間自動切換考科；也可在學生畫面點選下方考科手動切換。</span>
+            <label for="examDate">考試日期</label>
+            <input id="examDate" type="date" required>
           </div>
         </div>
-      </form>
-    </div>
+        <div class="row">
+          <div class="field">
+            <label for="expectedInput">應到人數</label>
+            <input id="expectedInput" type="number" min="0" max="99" required>
+          </div>
+          <div class="field">
+            <label for="presentInput">實到人數</label>
+            <input id="presentInput" type="number" min="0" max="99" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="absentInput">未到學生姓名</label>
+          <input id="absentInput" placeholder="例如：王小明、陳小華；全到請留白">
+        </div>
+        <div class="field">
+          <label for="noticeInput">考場提醒文字</label>
+          <input id="noticeInput" placeholder="例如：請專心作答，完成後記得檢查答案">
+        </div>
+        <div class="row">
+          <label class="checkline">
+            <input type="checkbox" id="bellEnabled">🔔 自動鐘聲（開始、結束及最後5分鐘）
+          </label>
+          <div class="field">
+            <label for="mascotSelect">進度游標</label>
+            <select id="mascotSelect">
+              <option value="🌱">🌱 小芽精靈</option>
+              <option value="🐣">🐣 圓滾滾小雞</option>
+              <option value="🐰">🐰 小兔子</option>
+              <option value="🐹">🐹 小倉鼠</option>
+              <option value="⭐">⭐ 小星星</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label>當日考程</label>
+          <div class="session-editor" id="sessionEditor"></div>
+          <button class="soft-btn" type="button" id="addSession">＋ 新增考科</button>
+          <span class="hint">系統會依目前時間自動切換考科；也可在學生畫面點選下方考科手動切換。</span>
+        </div>
+      </div>
+    </form>
     <div class="dialog-foot">
       <button class="soft-btn" data-close-teacher type="button">取消</button>
       <button class="primary-btn" id="saveSettings" type="button">儲存並套用</button>
     </div>
   </dialog>
 
-  <!-- 個別延長時間設定彈窗 -->
-  <dialog class="small-dialog" id="extensionDialog">
-    <form id="extensionForm">
-      <div class="dialog-head">
-        <h2>新增個別延長時間</h2>
-        <button class="soft-btn" data-close-extension type="button">✕</button>
-      </div>
-      <div class="small-body">
-        <div class="field">
-          <label for="studentName">學生姓名</label>
-          <input id="studentName" required placeholder="只會顯示在教師後台與該生平板">
-        </div>
-        <div class="row">
-          <div class="field">
-            <label for="studentSubject">考試科目</label>
-            <input id="studentSubject" required>
-          </div>
-          <div class="field">
-            <label for="extraMinutes">延長分鐘</label>
-            <input id="extraMinutes" type="number" min="1" max="180" value="20" required>
-          </div>
-        </div>
-        <p class="hint">倒數會從目前考科原定結束時間接續計算；若原定時間已過，則從現在開始計算。</p>
-        <div class="link-box" id="linkBox">
-          <b>平板專屬 QR Code 已建立</b>
-          <div class="qr-code" id="qrCode"></div>
-          <div class="qr-caption">請使用平板相機掃描</div>
-          <input id="tabletLink" readonly>
-          <div class="link-actions">
-            <button class="soft-btn" type="button" id="copyLink">複製連結</button>
-            <a class="primary-btn" id="openTablet" target="_blank" rel="noopener">開啟平板畫面</a>
-          </div>
-        </div>
-      </div>
-      <div class="dialog-foot">
-        <button class="soft-btn" data-close-extension type="button">取消</button>
-        <button class="primary-btn" type="submit">建立延長計時</button>
-      </div>
-    </form>
-  </dialog>
-
-  <!-- 二度開啟 QR Code 彈窗 -->
-  <dialog class="small-dialog" id="qrDialog">
-    <div class="dialog-head">
-      <h2 id="qrDialogTitle">平板專屬 QR Code</h2>
-      <button class="soft-btn" data-close-qr type="button">✕</button>
-    </div>
-    <div class="small-body">
-      <div class="qr-code" id="qrCodeAgain"></div>
-      <div class="qr-caption">請使用學生平板相機掃描</div>
-      <input id="qrLinkAgain" readonly>
-      <div class="link-actions">
-        <button class="soft-btn" type="button" id="copyQrLink">複製連結</button>
-        <a class="primary-btn" id="openQrTablet" target="_blank" rel="noopener">開啟平板畫面</a>
-      </div>
-    </div>
-  </dialog>
-
   <div class="toast" id="toast"></div>
 
-  <script src="vendor/qrcode.js"></script>
   <script>
     const STORAGE_KEY = 'dahu-exam-board-v2';
     const pad = n => String(n).padStart(2, '0');
@@ -1156,8 +854,7 @@
         { subject: '國語', start: '08:30', end: '09:20' },
         { subject: '英語', start: '09:30', end: '10:10' },
         { subject: '自然', start: '10:30', end: '11:10' }
-      ],
-      extensions: []
+      ]
     };
 
     let state = load();
@@ -1272,39 +969,6 @@
           toast('已手動切換考科；教師後台可重新重設');
         };
       });
-      renderExtensionList();
-    }
-
-    function renderExtensionList() {
-      state.extensions = state.extensions.filter(x => x.end > Date.now() - 3600000);
-      const box = $('#extensionList');
-      if (!state.extensions.length) {
-        box.innerHTML = '<div class="ext-empty">目前沒有個別延長計時</div>';
-        return;
-      }
-      box.innerHTML = state.extensions.map(x => `
-        <article class="ext-card">
-          <b>${esc(x.name)}｜${esc(x.subject)}</b>
-          <div class="ext-time" data-ext-time="${x.id}">${duration(x.end - Date.now())}</div>
-          <small>延長 ${x.extra} 分鐘</small>
-          <div class="ext-actions">
-            <button data-qr="${x.id}">顯示 QR Code</button>
-            <button data-end="${x.id}">結束</button>
-          </div>
-        </article>
-      `).join('');
-
-      document.querySelectorAll('[data-qr]').forEach(b => {
-        b.onclick = () => showQrDialog(b.dataset.qr);
-      });
-      document.querySelectorAll('[data-end]').forEach(b => {
-        b.onclick = () => {
-          state.extensions = state.extensions.filter(x => x.id !== b.dataset.end);
-          save();
-          renderExtensionList();
-          toast('已結束個別計時');
-        };
-      });
     }
 
     function tick() {
@@ -1338,11 +1002,6 @@
         const s = state.sessions[i];
         b.classList.toggle('active', i === v.i);
         b.classList.toggle('done', now >= atTime(state.date, s.end));
-      });
-
-      document.querySelectorAll('[data-ext-time]').forEach(n => {
-        const x = state.extensions.find(e => e.id === n.dataset.extTime);
-        if (x) n.textContent = duration(x.end - Date.now());
       });
 
       checkBells(now);
@@ -1392,7 +1051,6 @@
 
     function openTeacher() {
       fillSettings();
-      renderExtensionList();
       $('#teacherDialog').showModal();
     }
 
@@ -1433,57 +1091,6 @@
         };
       }).filter(s => s.start && s.end && s.start < s.end).sort((a, b) => a.start.localeCompare(b.start));
     }
-
-    function makeLink(x) {
-      const exam = sessions().find(s => s.subject === x.subject && s.endAt.getTime() === x.baseEnd);
-      const progressStart = x.start || exam?.startAt.getTime() || Math.min(Date.now(), x.baseEnd);
-      
-      let base = location.href.split('?')[0].split('#')[0];
-      const u = new URL(base, location.origin || 'http://localhost');
-      u.searchParams.set('individual', '1');
-      u.searchParams.set('name', x.name);
-      u.searchParams.set('subject', x.subject);
-      u.searchParams.set('start', progressStart);
-      u.searchParams.set('end', x.end);
-      u.searchParams.set('mascot', state.mascot);
-      return u.toString();
-    }
-
-    function renderQr(target, link) {
-      if (typeof qrcode === 'undefined') {
-        $(target).innerHTML = '<div style="color:var(--muted);padding:18px;">QR Code 模組未載入</div>';
-        return;
-      }
-      const qr = qrcode(0, 'M');
-      qr.addData(link);
-      qr.make();
-      $(target).innerHTML = qr.createSvgTag({ scalable: true, margin: 2 });
-    }
-
-    async function copyText(text) {
-      try {
-        await navigator.clipboard.writeText(text);
-        toast('平板連結已複製');
-      } catch {
-        prompt('請複製以下連結', text);
-      }
-    }
-
-    function showQrDialog(id) {
-      const x = state.extensions.find(e => e.id === id);
-      if (!x) return;
-      const link = makeLink(x);
-      $('#qrDialogTitle').textContent = x.name + '｜' + x.subject + ' 專屬 QR Code';
-      renderQr('#qrCodeAgain', link);
-      $('#qrLinkAgain').value = link;
-      $('#openQrTablet').href = link;
-      $('#qrDialog').showModal();
-    }
-
-    document.querySelectorAll('[data-close-qr]').forEach(b => {
-      b.onclick = () => $('#qrDialog').close();
-    });
-    $('#copyQrLink').onclick = () => copyText($('#qrLinkAgain').value);
 
     $('#teacherBtn').onclick = openTeacher;
     document.querySelectorAll('[data-close-teacher]').forEach(b => {
@@ -1530,103 +1137,10 @@
 
     $('#fullBtn').onclick = () => document.documentElement.requestFullscreen?.();
 
-    $('#openExtension').onclick = () => {
-      const v = currentView();
-      $('#studentName').value = '';
-      $('#studentSubject').value = v.subject;
-      $('#extraMinutes').value = 20;
-      $('#linkBox').classList.remove('show');
-      $('#extensionDialog').showModal();
-    };
-
-    document.querySelectorAll('[data-close-extension]').forEach(b => {
-      b.onclick = () => $('#extensionDialog').close();
-    });
-
-    $('#extensionForm').onsubmit = e => {
-      e.preventDefault();
-      const now = Date.now();
-      const v = currentView();
-      const extra = Number($('#extraMinutes').value);
-      const baseEnd = Math.max(v.endAt?.getTime?.() || now, now);
-      const progressStart = Math.min(v.startAt?.getTime?.() || now, now);
-      const x = {
-        id: crypto.randomUUID?.() || String(now),
-        name: $('#studentName').value.trim(),
-        subject: $('#studentSubject').value.trim(),
-        extra,
-        start: progressStart,
-        baseEnd,
-        end: baseEnd + extra * 60000
-      };
-      state.extensions.push(x);
-      save();
-      renderExtensionList();
-      const link = makeLink(x);
-      renderQr('#qrCode', link);
-      $('#tabletLink').value = link;
-      $('#openTablet').href = link;
-      $('#linkBox').classList.add('show');
-      toast('個別延長計時已建立');
-    };
-
-    $('#copyLink').onclick = () => copyText($('#tabletLink').value);
-
-    function initTablet() {
-      const p = new URLSearchParams(location.search);
-      if (p.get('individual') !== '1') return false;
-      $('#classView').style.display = 'none';
-      $('#tabletView').style.display = 'block';
-      const name = p.get('name') || '同學';
-      const subject = p.get('subject') || '考試';
-      const start = Number(p.get('start')) || Date.now();
-      const end = Number(p.get('end')) || Date.now();
-      const mascot = p.get('mascot') || '🌱';
-
-      $('#tabletName').textContent = name;
-      $('#tabletSubject').textContent = subject;
-      $('#tabletMascot').textContent = mascot;
-
-      function run() {
-        const now = Date.now();
-        const remaining = end - now;
-        const total = Math.max(1, end - start);
-        const progress = Math.max(0, Math.min(1, (now - start) / total));
-        const urgent = remaining > 0 && remaining <= 300000;
-
-        $('#tabletCountdown').textContent = duration(remaining);
-        $('#tabletProgress').style.width = `${progress * 100}%`;
-        $('#tabletProgress').classList.toggle('urgent', urgent);
-        $('#tabletMascot').style.left = `${Math.max(2, Math.min(98, progress * 100))}%`;
-        $('#tabletTimer').classList.toggle('urgent', urgent);
-
-        if (remaining <= 0) {
-          $('#tabletMessage').textContent = '作答時間結束，請停筆並交卷。';
-          if (!fired.has('tablet-end')) {
-            fired.add('tablet-end');
-            chime();
-          }
-        }
-      }
-
-      run();
-      setInterval(run, 1000);
-
-      $('#tabletFull').onclick = () => document.documentElement.requestFullscreen?.();
-      $('#tabletSound').onclick = () => {
-        state.bellEnabled = true;
-        ensureAudio();
-        chime();
-        $('#tabletSound').textContent = '🔔 結束鈴聲已啟用';
-      };
-      return true;
-    }
-
-    if (!initTablet()) {
-      renderStatic();
-      tick();
-      setInterval(tick, 1000);
-    }
+    // 初始化並啟動主看板
+    renderStatic();
+    tick();
+    setInterval(tick, 1000);
   </script>
 </body>
 </html>
