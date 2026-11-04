@@ -365,6 +365,18 @@
       margin-bottom: 8px;
     }
 
+    .side-title span:first-child {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .side-title .title-icon {
+      font-size: 1em;
+      line-height: 1;
+      display: inline-block;
+    }
+
     .rate {
       font-size: clamp(15px, 1.1vw, 18px);
       color: #5e9d8c;
@@ -777,8 +789,8 @@
       width: 100%;
       padding: 0 clamp(14px, 1.8vw, 26px);
       box-sizing: border-box;
-      margin-top: -30px;
-      margin-bottom: 16px;
+      margin-top: -40px;
+      margin-bottom: 26px;
       gap: clamp(12px, 2vh, 24px);
     }
 
@@ -946,7 +958,7 @@
 
       <aside class="card attendance">
         <div class="side-title">
-          <span>👥 應考資訊</span>
+          <span><span class="title-icon">🪄</span> 應考資訊</span>
           <span class="rate" id="rate">100%</span>
         </div>
         <div class="stats">
