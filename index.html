@@ -639,34 +639,25 @@
     }
 
     :fullscreen body {
-      padding: 0;
+      padding: clamp(16px, 2.8vh, 32px) clamp(16px, 2.5vw, 36px);
+      min-height: 100vh;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     :fullscreen .app {
-      max-width: 1680px;
+      max-width: 1600px;
       width: 100%;
-      min-height: 100vh;
-      margin: 0 auto;
-      border: 0;
-      border-radius: 0;
-      padding: clamp(24px, 3.5vh, 48px) clamp(36px, 6vw, 110px);
-      gap: clamp(14px, 2vmin, 22px);
-    }
-
-    :fullscreen .fullscreen-hide {
-      display: none !important;
-    }
-
-    :fullscreen .teacher-entry {
-      position: fixed;
-      right: 18px;
-      bottom: 14px;
-      z-index: 12;
-      opacity: 0.22;
-    }
-
-    :fullscreen .teacher-entry:hover {
-      opacity: 1;
+      min-height: calc(100vh - 48px);
+      margin: auto;
+      border: 1px solid rgba(122, 111, 91, 0.17);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      background: rgba(255, 254, 251, 0.96);
+      padding: clamp(20px, 2.6vmin, 32px);
+      gap: clamp(12px, 1.8vmin, 20px);
     }
 
     @media (max-width: 900px) {
@@ -734,7 +725,7 @@
       <div class="clock" id="clock">00:00:00</div>
       <div class="top-actions">
         <div class="date" id="dateLabel"></div>
-        <button class="icon-btn fullscreen-hide" id="fullBtn">⛶ 全螢幕</button>
+        <button class="icon-btn" id="fullBtn">⛶ 全螢幕</button>
       </div>
     </header>
 
@@ -1179,7 +1170,22 @@
       toast('已重新依目前時間自動判斷考科');
     };
 
-    $('#fullBtn').onclick = () => document.documentElement.requestFullscreen?.();
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen?.().catch(() => {});
+      } else {
+        document.exitFullscreen?.().catch(() => {});
+      }
+    }
+    $('#fullBtn').onclick = toggleFullscreen;
+
+    function handleFullscreenChange() {
+      const btn = $('#fullBtn');
+      if (!btn) return;
+      btn.textContent = document.fullscreenElement ? '⛶ 結束全螢幕' : '⛶ 全螢幕';
+    }
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
 
     // 初始化並啟動主看板
     renderStatic();
