@@ -283,7 +283,7 @@
 
     .progress-wrap {
       position: relative;
-      padding-top: 26px;
+      padding-top: 22px;
       width: 100%;
     }
 
@@ -309,7 +309,7 @@
 
     .mascot {
       position: absolute;
-      top: -10px;
+      top: 0;
       left: 2%;
       transform: translateX(-50%);
       font-size: 32px;
@@ -427,10 +427,9 @@
       border: 2px solid var(--line);
       background: #fff;
       border-radius: 18px;
-      padding: 12px 20px;
+      padding: 12px 18px;
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 12px;
       cursor: pointer;
       white-space: nowrap;
@@ -644,154 +643,14 @@
     }
 
     :fullscreen .app {
-      max-width: 1720px;
+      max-width: 1680px;
       width: 100%;
-      height: 100vh;
       min-height: 100vh;
-      box-sizing: border-box;
       margin: 0 auto;
       border: 0;
       border-radius: 0;
-      padding: clamp(20px, 3vh, 44px) clamp(32px, 5vw, 90px);
-      gap: clamp(14px, 2.2vh, 26px);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    :fullscreen .clock {
-      font-size: clamp(52px, min(7vw, 11vh), 116px);
-    }
-
-    :fullscreen .brand {
-      font-size: clamp(28px, min(3vw, 4.5vh), 46px);
-    }
-
-    :fullscreen .brand-badge {
-      width: 62px;
-      height: 62px;
-      font-size: 38px;
-    }
-
-    :fullscreen .date {
-      font-size: clamp(20px, min(1.8vw, 2.8vh), 28px);
-    }
-
-    :fullscreen .exam-card {
-      padding: clamp(22px, 3vmin, 44px);
-    }
-
-    :fullscreen .mode {
-      padding: 8px 18px;
-      font-size: clamp(15px, 1.2vw, 18px);
-    }
-
-    :fullscreen .subject {
-      font-size: clamp(56px, min(9vw, 13vh), 136px);
-    }
-
-    :fullscreen .period {
-      font-size: clamp(24px, min(2.6vw, 3.8vh), 38px);
-      padding: 10px 24px;
-      border-radius: 20px;
-    }
-
-    :fullscreen .timer-panel {
-      width: min(86%, 680px);
-      padding: clamp(26px, 4.2vmin, 54px) clamp(24px, 3.5vmin, 44px);
-      border-radius: 32px;
-    }
-
-    :fullscreen .timer-label {
-      font-size: clamp(24px, min(2.5vw, 3.8vh), 36px);
-      margin-bottom: 12px;
-    }
-
-    :fullscreen .countdown {
-      font-size: clamp(68px, min(11vw, 16vh), 165px);
-    }
-
-    :fullscreen .progress {
-      height: 34px;
-    }
-
-    :fullscreen .mascot {
-      font-size: 38px;
-      top: -12px;
-    }
-
-    :fullscreen .scale {
-      font-size: clamp(18px, min(1.5vw, 2.5vh), 24px);
-      margin-top: 10px;
-    }
-
-    :fullscreen .stats .stat {
-      padding: 18px 10px;
-      border-radius: 20px;
-    }
-
-    :fullscreen .stats .stat span {
-      font-size: 16px;
-    }
-
-    :fullscreen .stats .stat strong {
-      font-size: clamp(40px, min(4.8vw, 7vh), 76px);
-    }
-
-    :fullscreen .side-title {
-      font-size: 25px;
-    }
-
-    :fullscreen .rate {
-      font-size: 19px;
-    }
-
-    :fullscreen .notice {
-      padding: 22px;
-      border-radius: 22px;
-    }
-
-    :fullscreen .notice b,
-    :fullscreen .names b {
-      font-size: 20px;
-    }
-
-    :fullscreen .notice p {
-      font-size: clamp(26px, min(2.8vw, 4.2vh), 44px);
-    }
-
-    :fullscreen .names {
-      padding: 20px;
-      border-radius: 22px;
-    }
-
-    :fullscreen .names p {
-      font-size: clamp(22px, min(2vw, 3vh), 32px);
-    }
-
-    :fullscreen .session {
-      padding: 15px 22px;
-      border-radius: 20px;
-      gap: 14px;
-    }
-
-    :fullscreen .session .num {
-      width: 42px;
-      height: 42px;
-      font-size: 20px;
-      border-radius: 13px;
-    }
-
-    :fullscreen .session strong {
-      font-size: 25px;
-    }
-
-    :fullscreen .session time {
-      font-size: 20px;
-    }
-
-    :fullscreen .copyright {
-      font-size: 16px;
+      padding: clamp(24px, 3.5vh, 48px) clamp(36px, 6vw, 110px);
+      gap: clamp(14px, 2vmin, 22px);
     }
 
     :fullscreen .fullscreen-hide {
