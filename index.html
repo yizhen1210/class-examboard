@@ -42,7 +42,7 @@
     }
 
     body {
-      padding: clamp(16px, 2.5vh, 32px) clamp(10px, 2vw, 24px) clamp(12px, 2vh, 24px);
+      padding: clamp(10px, 2vh, 24px) clamp(12px, 2vw, 24px) clamp(10px, 1.8vh, 20px);
       background:
         radial-gradient(circle at 0 0, #fff9e9 0 15%, transparent 40%),
         radial-gradient(circle at 100% 100%, #dcf2ea 0 14%, transparent 38%),
@@ -51,12 +51,12 @@
 
     .app {
       max-width: 1560px;
-      min-height: calc(100vh - 48px);
+      min-height: calc(100vh - 36px);
       margin: auto;
-      padding: clamp(20px, 2.6vmin, 32px);
+      padding: clamp(16px, 2.2vmin, 28px);
       display: flex;
       flex-direction: column;
-      gap: clamp(12px, 1.8vmin, 20px);
+      gap: clamp(10px, 1.5vmin, 18px);
       background: rgba(255, 254, 251, 0.96);
       border: 1px solid rgba(122, 111, 91, 0.17);
       border-radius: 28px;
@@ -185,6 +185,7 @@
       gap: clamp(8px, 1.2vh, 16px);
       position: relative;
       z-index: 1;
+      padding-left: clamp(16px, 2.4vw, 36px);
     }
 
     .mode {
@@ -233,15 +234,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: clamp(6px, 1vh, 12px);
+      gap: clamp(10px, 1.8vh, 22px);
       width: 100%;
+      margin-top: -16px;
+      margin-bottom: 4px;
     }
 
     .timer-panel {
       background: var(--yellow);
       border: 1px solid #eedf9e;
-      border-radius: 26px;
-      padding: clamp(20px, 3.2vh, 40px) clamp(24px, 3.5vw, 48px);
+      border-radius: 28px;
+      padding: clamp(18px, 2.8vh, 36px) clamp(24px, 3.5vw, 48px);
       width: min(88%, 660px);
       box-sizing: border-box;
       position: relative;
@@ -285,8 +288,9 @@
 
     .progress-wrap {
       position: relative;
-      padding-top: 26px;
-      width: 100%;
+      padding-top: 24px;
+      width: min(90%, 580px);
+      margin: 0 auto;
     }
 
     .progress {
@@ -311,10 +315,13 @@
 
     .mascot {
       position: absolute;
-      top: -12px;
+      top: 4px;
       left: 2%;
       transform: translateX(-50%);
-      font-size: 32px;
+      font-size: 34px;
+      line-height: 1;
+      z-index: 2;
+      pointer-events: none;
       transition: left 0.8s linear;
       filter: drop-shadow(0 3px 2px rgba(71, 61, 50, 0.15));
     }
@@ -450,6 +457,7 @@
       font-weight: 1000;
       font-size: 18px;
       flex-shrink: 0;
+      margin-right: 12px;
     }
 
     .session strong {
@@ -655,84 +663,137 @@
       opacity: 1;
     }
 
-    :fullscreen body {
-      padding: clamp(16px, 2.5vh, 28px) clamp(16px, 2.5vw, 36px);
-      min-height: 100vh;
+    :fullscreen,
+    :-webkit-full-screen,
+    :fullscreen body,
+    :-webkit-full-screen body {
+      height: 100vh !important;
+      max-height: 100vh !important;
+      overflow: hidden !important;
       box-sizing: border-box;
+    }
+
+    :fullscreen body,
+    :-webkit-full-screen body {
+      margin: 0;
+      padding: clamp(20px, 3vh, 32px) clamp(16px, 2.5vw, 36px) clamp(12px, 2vh, 22px);
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    :fullscreen .app {
+    :fullscreen .app,
+    :-webkit-full-screen .app {
       max-width: 1600px;
       width: 100%;
-      min-height: calc(100vh - 44px);
+      height: 100%;
+      max-height: 100%;
+      min-height: 0;
       margin: auto;
       border: 1px solid rgba(122, 111, 91, 0.17);
       border-radius: 28px;
       box-shadow: var(--shadow);
       background: rgba(255, 254, 251, 0.96);
-      padding: clamp(18px, 2.4vmin, 30px);
-      gap: clamp(10px, 1.5vh, 18px);
+      padding: clamp(16px, 2.2vmin, 28px);
+      gap: clamp(8px, 1.2vh, 16px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    :fullscreen #fullBtn,
+    :-webkit-full-screen #fullBtn {
+      display: none !important;
+    }
+
+    :fullscreen .board,
+    :-webkit-full-screen .board {
+      flex: 1;
+      min-height: 0;
+    }
+
+    :fullscreen .exam-card,
+    :-webkit-full-screen .exam-card,
+    :fullscreen .attendance,
+    :-webkit-full-screen .attendance {
+      height: 100%;
+      min-height: 0;
+    }
+
+    :fullscreen .exam-card,
+    :-webkit-full-screen .exam-card {
+      padding: clamp(18px, 2.4vmin, 32px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
-    :fullscreen #fullBtn {
-      display: none !important;
+    :fullscreen .exam-header,
+    :-webkit-full-screen .exam-header {
+      padding-left: clamp(20px, 3vw, 44px);
     }
 
-    :fullscreen .board {
-      flex: 1;
-      min-height: clamp(480px, 58vh, 680px);
+    :fullscreen .exam-timer-section,
+    :-webkit-full-screen .exam-timer-section {
+      margin-top: -20px;
+      margin-bottom: 6px;
+      gap: clamp(12px, 2vh, 24px);
     }
 
-    :fullscreen .exam-card,
-    :fullscreen .attendance {
-      height: 100%;
-      min-height: 100%;
-    }
-
-    :fullscreen .exam-card {
-      padding: clamp(20px, 2.6vmin, 36px);
-    }
-
-    :fullscreen .attendance {
+    :fullscreen .attendance,
+    :-webkit-full-screen .attendance {
       display: flex;
       flex-direction: column;
-      padding: clamp(20px, 2.6vmin, 32px);
+      justify-content: space-between;
+      padding: clamp(18px, 2.4vmin, 30px);
+      gap: clamp(12px, 1.6vh, 20px);
     }
 
-    :fullscreen .attendance .notice {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    :fullscreen .timer-panel,
+    :-webkit-full-screen .timer-panel {
+      width: min(90%, 680px);
+      padding: clamp(20px, 3vh, 38px) clamp(24px, 3.5vw, 48px);
+      border-radius: 28px;
     }
 
-    :fullscreen .timer-panel {
-      width: min(90%, 700px);
-      padding: clamp(22px, 3.4vh, 42px) clamp(24px, 3.5vw, 48px);
-    }
-
-    :fullscreen .countdown {
+    :fullscreen .countdown,
+    :-webkit-full-screen .countdown {
       font-size: clamp(52px, min(8.2vw, 12vh), 118px);
       letter-spacing: 0;
     }
 
-    :fullscreen .mascot {
-      top: -14px;
+    :fullscreen .progress-wrap,
+    :-webkit-full-screen .progress-wrap {
+      width: min(90%, 640px);
+      margin: 0 auto;
+      padding-top: 24px;
     }
 
-    :fullscreen .teacher-entry button {
+    :fullscreen .mascot,
+    :-webkit-full-screen .mascot {
+      top: 6px;
+      font-size: 36px;
+      line-height: 1;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    :fullscreen .session .num,
+    :-webkit-full-screen .session .num {
+      margin-right: 14px;
+    }
+
+    :fullscreen .teacher-entry button,
+    :-webkit-full-screen .teacher-entry button {
       opacity: 0.22;
       filter: blur(0.4px);
       transition: opacity 0.25s ease, filter 0.25s ease;
     }
 
-    :fullscreen .teacher-entry button:hover {
+    :fullscreen .teacher-entry button:hover,
+    :-webkit-full-screen .teacher-entry button:hover {
       opacity: 1;
       filter: none;
     }
