@@ -1090,7 +1090,6 @@
           <label>當日考程</label>
           <div class="session-editor" id="sessionEditor"></div>
           <button class="soft-btn" type="button" id="addSession">＋ 新增考科</button>
-          <span class="hint">系統會依目前時間自動切換考科；也可在學生畫面點選下方考科手動切換。</span>
         </div>
       </div>
     </form>
@@ -1103,7 +1102,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const STORAGE_KEY = 'dahu-exam-board-v2';
+    const STORAGE_KEY = 'dahu-exam-board-v3';
     const pad = n => String(n).padStart(2, '0');
     const $ = s => document.querySelector(s);
     const today = () => {
@@ -1121,9 +1120,10 @@
       bellEnabled: false,
       mascot: '🌱',
       sessions: [
-        { subject: '國語', start: '08:30', end: '09:20' },
-        { subject: '英語', start: '09:30', end: '10:10' },
-        { subject: '自然', start: '10:30', end: '11:10' }
+        { subject: '國語', start: '08:20', end: '09:10' },
+        { subject: '自然', start: '09:20', end: '10:00' },
+        { subject: '數學', start: '08:10', end: '09:10' },
+        { subject: '社會', start: '09:20', end: '10:00' }
       ]
     };
 
@@ -1135,7 +1135,16 @@
 
     function load() {
       try {
-        return { ...defaults, ...JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') };
+        const v3 = localStorage.getItem(STORAGE_KEY);
+        if (v3) return { ...defaults, ...JSON.parse(v3) };
+        const v2Raw = localStorage.getItem('dahu-exam-board-v2');
+        if (v2Raw) {
+          const v2 = JSON.parse(v2Raw);
+          const merged = { ...defaults, ...v2, sessions: defaults.sessions };
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
+          return merged;
+        }
+        return { ...defaults };
       } catch {
         return (typeof structuredClone === 'function')
           ? structuredClone(defaults)
@@ -1360,7 +1369,7 @@
           start: x[1].value,
           end: x[2].value
         };
-      }).filter(s => s.start && s.end && s.start < s.end).sort((a, b) => a.start.localeCompare(b.start));
+      }).filter(s => s.start && s.end && s.start < s.end);
     }
 
     $('#teacherBtn').onclick = openTeacher;
