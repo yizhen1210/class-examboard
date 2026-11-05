@@ -59,7 +59,7 @@
       max-width: none;
       min-height: calc(100vh - 70px);
       margin: 0;
-      padding: clamp(18px, 2.2vmin, 25px) 35px;
+      padding: clamp(12px, 1.8vmin, 22px) 35px;
       display: flex;
       flex-direction: column;
       gap: 0;
@@ -75,8 +75,8 @@
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
       gap: 16px;
-      padding: 5px 0;
-      margin-bottom: clamp(10px, 1.5vh, 20px);
+      padding: clamp(2px, 0.5vh, 5px) 0;
+      margin-bottom: clamp(6px, 1.0vh, 16px);
     }
 
     .brand {
@@ -100,7 +100,7 @@
 
     .clock {
       text-align: center;
-      font-size: clamp(44px, min(6.2vw, 9.5vh), 96px);
+      font-size: clamp(38px, min(5.8vw, 8.5vh), 92px);
       font-weight: 1000;
       font-variant-numeric: tabular-nums;
       letter-spacing: 0.05em;
@@ -165,13 +165,14 @@
     }
 
     .exam-card {
-      padding: clamp(18px, 2.2vmin, 36px);
+      padding: clamp(14px, 2.0vmin, 28px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: clamp(14px, 1.8vmin, 26px);
+      gap: clamp(8px, 1.5vh, 20px);
       position: relative;
       overflow: hidden;
+      min-height: 0;
     }
 
     .exam-card:after {
@@ -190,10 +191,11 @@
     .exam-header {
       display: flex;
       flex-direction: column;
-      gap: clamp(8px, 1.2vh, 16px);
+      gap: clamp(6px, 1.0vh, 12px);
       position: relative;
       z-index: 1;
-      padding: clamp(10px, 1.5vw, 22px) clamp(10px, 1.5vw, 22px) 0;
+      padding: clamp(8px, 1.2vw, 18px) clamp(10px, 1.5vw, 22px) 0;
+      flex-shrink: 0;
     }
 
     .mode {
@@ -204,8 +206,8 @@
       position: relative;
       z-index: 1;
       border-radius: 999px;
-      padding: 8px 18px;
-      font-size: clamp(18px, 1.4vw, 24px);
+      padding: clamp(5px, 0.8vh, 8px) clamp(12px, 1.2vw, 18px);
+      font-size: clamp(16px, 1.3vw, 22px);
       letter-spacing: 0.05em;
       background: var(--pink2);
       color: #a44e63;
@@ -215,24 +217,24 @@
     .subject-row {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: clamp(10px, 1.5vw, 18px);
       flex-wrap: wrap;
       position: relative;
       z-index: 1;
-      margin-top: 10px;
+      margin-top: clamp(2px, 0.6vh, 8px);
     }
 
     .subject {
-      font-size: clamp(56px, min(8.8vw, 12vh), 126px);
+      font-size: clamp(38px, min(6.8vw, 9.6vh), 110px);
       font-weight: 1000;
       letter-spacing: 0.06em;
-      line-height: 1;
+      line-height: 1.05;
     }
 
     .period {
-      font-size: clamp(24px, min(2.6vw, 3.6vh), 38px);
+      font-size: clamp(18px, min(2.0vw, 2.8vh), 32px);
       font-weight: 1000;
-      padding: 9px 22px;
+      padding: clamp(5px, 0.8vh, 8px) clamp(12px, 1.5vw, 20px);
       border-radius: 16px;
       background: #f4f1eb;
       border: 2px solid var(--line);
@@ -243,19 +245,21 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: clamp(10px, 1.8vh, 22px);
+      justify-content: space-around;
+      gap: clamp(8px, 1.4vh, 18px);
       width: 100%;
       padding: 0 clamp(10px, 1.5vw, 22px);
       box-sizing: border-box;
-      margin-top: -16px;
-      margin-bottom: 4px;
+      flex: 1;
+      min-height: 0;
+      margin: 0;
     }
 
     .timer-panel {
       background: var(--yellow);
       border: 1px solid #eedf9e;
       border-radius: 28px;
-      padding: clamp(18px, 2.8vh, 36px) clamp(24px, 3.5vw, 48px);
+      padding: clamp(12px, 2.0vh, 32px) clamp(16px, 2.8vw, 40px);
       width: 100%;
       max-width: none;
       box-sizing: border-box;
@@ -270,16 +274,16 @@
     }
 
     .timer-label {
-      font-size: clamp(20px, min(2.1vw, 3.2vh), 30px);
+      font-size: clamp(15px, min(1.6vw, 2.2vh), 24px);
       font-weight: 1000;
       letter-spacing: 0.04em;
       color: #817348;
-      margin-bottom: 8px;
+      margin-bottom: clamp(4px, 0.6vh, 8px);
       text-align: center;
     }
 
     .countdown {
-      font-size: clamp(48px, min(7.6vw, 11.5vh), 114px);
+      font-size: clamp(40px, min(7.2vw, 10.5vh), 110px);
       font-weight: 1000;
       line-height: 1;
       font-variant-numeric: tabular-nums;
@@ -743,7 +747,7 @@
       border-radius: 28px;
       box-shadow: var(--shadow);
       background: rgba(255, 254, 251, 0.96);
-      padding: clamp(16px, 2.2vmin, 25px) 35px !important;
+      padding: clamp(12px, 1.8vmin, 22px) 35px !important;
       gap: 0 !important;
       display: flex;
       flex-direction: column;
@@ -773,15 +777,18 @@
 
     :fullscreen .exam-card,
     :-webkit-full-screen .exam-card {
-      padding: clamp(18px, 2.4vmin, 32px);
+      padding: clamp(14px, 1.8vmin, 26px);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      min-height: 0;
+      overflow: hidden;
     }
 
     :fullscreen .exam-header,
     :-webkit-full-screen .exam-header {
-      padding: clamp(14px, 1.8vw, 26px) clamp(14px, 1.8vw, 26px) 0;
+      padding: clamp(8px, 1.2vw, 18px) clamp(14px, 1.8vw, 26px) 0;
+      flex-shrink: 0;
     }
 
     :fullscreen .exam-timer-section,
@@ -789,9 +796,13 @@
       width: 100%;
       padding: 0 clamp(14px, 1.8vw, 26px);
       box-sizing: border-box;
-      margin-top: -40px;
-      margin-bottom: 16px;
-      gap: clamp(12px, 2vh, 24px);
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      gap: clamp(8px, 1.4vh, 18px);
+      margin: 0;
     }
 
     :fullscreen .attendance,
@@ -807,13 +818,13 @@
     :-webkit-full-screen .timer-panel {
       width: 100%;
       max-width: none;
-      padding: clamp(20px, 3vh, 38px) clamp(24px, 3.5vw, 48px);
+      padding: clamp(12px, 2.0vh, 32px) clamp(16px, 2.8vw, 40px);
       border-radius: 28px;
     }
 
     :fullscreen .countdown,
     :-webkit-full-screen .countdown {
-      font-size: clamp(52px, min(8.2vw, 12vh), 118px);
+      font-size: clamp(40px, min(7.2vw, 10.5vh), 110px);
       letter-spacing: 0;
     }
 
@@ -821,7 +832,7 @@
     :-webkit-full-screen .progress-wrap {
       width: 100%;
       max-width: none;
-      margin: 10px 0 0 0;
+      margin: 0;
       padding-top: 24px;
       box-sizing: border-box;
     }
