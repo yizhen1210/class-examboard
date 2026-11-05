@@ -1011,11 +1011,11 @@
         </div>
         <div class="names">
           <b>未到學生姓名</b>
-          <p id="absentNames">無</p>
+          <p id="absentNames">全員到齊🎉</p>
         </div>
         <div class="notice">
           <b>考場提醒</b>
-          <p id="noticeText">全體到齊，安心作答！</p>
+          <p id="noticeText">請專心作答，完成後記得仔細認真檢查！</p>
         </div>
       </aside>
     </section>
@@ -1069,7 +1069,7 @@
         </div>
         <div class="field">
           <label for="noticeInput">考場提醒文字</label>
-          <input id="noticeInput" placeholder="例如：請專心作答，完成後記得檢查答案">
+          <input id="noticeInput" placeholder="例如：請專心作答，完成後記得仔細認真檢查！">
         </div>
         <div class="row">
           <label class="checkline">
@@ -1102,7 +1102,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    const STORAGE_KEY = 'dahu-exam-board-v3';
+    const STORAGE_KEY = 'dahu-exam-board-v4';
     const pad = n => String(n).padStart(2, '0');
     const $ = s => document.querySelector(s);
     const today = () => {
@@ -1116,7 +1116,7 @@
       expected: 20,
       present: 20,
       absentNames: '',
-      noticeText: '請專心作答，完成後記得檢查答案。',
+      noticeText: '請專心作答，完成後記得仔細認真檢查！',
       bellEnabled: false,
       mascot: '🌱',
       sessions: [
@@ -1135,12 +1135,19 @@
 
     function load() {
       try {
-        const v3 = localStorage.getItem(STORAGE_KEY);
-        if (v3) return { ...defaults, ...JSON.parse(v3) };
-        const v2Raw = localStorage.getItem('dahu-exam-board-v2');
-        if (v2Raw) {
-          const v2 = JSON.parse(v2Raw);
-          const merged = { ...defaults, ...v2, sessions: defaults.sessions };
+        const v4 = localStorage.getItem(STORAGE_KEY);
+        if (v4) return { ...defaults, ...JSON.parse(v4) };
+        const prevRaw = localStorage.getItem('dahu-exam-board-v3') || localStorage.getItem('dahu-exam-board-v2');
+        if (prevRaw) {
+          const prev = JSON.parse(prevRaw);
+          const oldNotices = [
+            '請專心作答，完成後記得檢查答案。',
+            '全體到齊，安心作答！'
+          ];
+          const noticeText = (!prev.noticeText || oldNotices.includes(prev.noticeText.trim()))
+            ? defaults.noticeText
+            : prev.noticeText;
+          const merged = { ...defaults, ...prev, noticeText, sessions: defaults.sessions };
           localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
           return merged;
         }
@@ -1234,8 +1241,17 @@
       const missing = Math.max(0, state.expected - state.present);
       $('#missing').textContent = missing;
       $('#rate').textContent = state.expected ? `${Math.round(state.present / state.expected * 100)}%` : '—';
-      $('#absentNames').textContent = state.absentNames.trim() || '無';
-      $('#noticeText').textContent = state.noticeText.trim() || '請專心作答，完成後記得檢查答案。';
+      const absentText = state.absentNames.trim();
+      if (missing === 0 && (!absentText || absentText === '無')) {
+        $('#absentNames').textContent = '全員到齊🎉';
+      } else if (absentText) {
+        $('#absentNames').textContent = absentText;
+      } else if (missing === 0) {
+        $('#absentNames').textContent = '全員到齊🎉';
+      } else {
+        $('#absentNames').textContent = '無';
+      }
+      $('#noticeText').textContent = state.noticeText.trim() || '請專心作答，完成後記得仔細認真檢查！';
       $('#mascot').textContent = state.mascot;
       $('#schedule').dataset.count = state.sessions.length;
       $('#schedule').innerHTML = state.sessions.map((s, i) =>
