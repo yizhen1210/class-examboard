@@ -1040,7 +1040,7 @@
     <div class="dialog-head">
       <h2>教師控制後台</h2>
       <div class="head-actions">
-        <button class="soft-btn" id="autoReset" type="button">↺ 重新重設</button>
+        <button class="soft-btn" id="autoReset" type="button">↺ 恢復預設考程</button>
         <button class="soft-btn" data-close-teacher type="button">✕</button>
       </div>
     </div>
@@ -1138,11 +1138,9 @@
 
     function load() {
       try {
-        const v4 = localStorage.getItem(STORAGE_KEY);
-        if (v4) return { ...defaults, ...JSON.parse(v4) };
-        const prevRaw = localStorage.getItem('dahu-exam-board-v3') || localStorage.getItem('dahu-exam-board-v2');
-        if (prevRaw) {
-          const prev = JSON.parse(prevRaw);
+        const raw = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('dahu-exam-board-v3') || localStorage.getItem('dahu-exam-board-v2');
+        if (raw) {
+          const prev = JSON.parse(raw);
           const oldNotices = [
             '請專心作答，完成後記得檢查答案。',
             '全體到齊，安心作答！'
@@ -1150,11 +1148,15 @@
           const noticeText = (!prev.noticeText || oldNotices.includes(prev.noticeText.trim()))
             ? defaults.noticeText
             : prev.noticeText;
-          const merged = { ...defaults, ...prev, noticeText, sessions: defaults.sessions };
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(merged));
-          return merged;
+          return {
+            ...defaults,
+            ...prev,
+            noticeText,
+            // 每次重新整理畫面，均自動恢復為固定預設考程
+            sessions: JSON.parse(JSON.stringify(defaults.sessions))
+          };
         }
-        return { ...defaults };
+        return JSON.parse(JSON.stringify(defaults));
       } catch {
         return (typeof structuredClone === 'function')
           ? structuredClone(defaults)
@@ -1429,9 +1431,13 @@
     };
 
     $('#autoReset').onclick = () => {
+      state.sessions = JSON.parse(JSON.stringify(defaults.sessions));
+      renderEditor(state.sessions);
       manualIndex = null;
+      save();
+      renderStatic();
       tick();
-      toast('已重新依目前時間自動判斷考科');
+      toast('已恢復為固定預設考程');
     };
 
     function toggleFullscreen() {
